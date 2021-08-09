@@ -1,0 +1,17 @@
+div{
+    max-width: 400px;
+    text-align: center;
+}
+p{
+    font-size: large;
+}
+input{
+    width:80%;
+    height:2rem;
+    margin: auto;
+    display:block;
+}
+button{
+    font-size: larger;
+    margin: 1rem;
+}
