@@ -1,58 +1,61 @@
-var billAmount=document.querySelector("#bill-amount");
-var nextButton=document.querySelector("#next-btn");
-var div=document.querySelector("#content");
-var message=document.createElement("p");
-var table=document.createElement("table");
-var cashGiven= document.createElement("h3");
-var cashGivenInuptbox=document.createElement("input");
-var checkButton=document.createElement("button");
-checkButton.innerText="Check";
-cashGiven.innerText="Cash Given:"
-function nextClickHandler(){
-    if(billAmount.value==""){
-        message.innerText="Please enter a bill amount to proceed to the next step";
+var billAmount = document.querySelector("#bill-amount");
+var nextButton = document.querySelector("#next-btn");
+var table = document.querySelector("#cash-table");
+table.style.display = "none";
+var div = document.querySelector("#content");
+var message = document.createElement("p");
+var cashSection=document.querySelector("#cash");
+
+var cashGiven = document.querySelector("#cash-given");
+var checkButton=document.querySelector("#check-btn");
+var noOfNotesArr = document.querySelectorAll(".noOfNotes");
+var notesArr = [2000, 500, 100, 20, 10, 5, 1];
+cashSection.style.display="none";
+console.log(cashSection);
+
+function nextClickHandler() {
+    if (billAmount.value == "") {
+        message.innerText = "Please enter a bill amount to proceed to the next step";
         div.appendChild(message);
-        
-    }
-    else{
-      message.remove();
-       div.appendChild(cashGiven);
-       div.appendChild(cashGivenInuptbox);
-       div.appendChild(checkButton);
-    }
-}
-function checkClickHandler(){
-    console.log(billAmount.value);
-    if(billAmount.value>cashGivenInuptbox.value){
-        message.innerText="Cash given should be greater than or equal to Bill amount";
-        div.appendChild(message);
-    }
-    else{
+
+    } else {
         message.remove();
-        div.appendChild(table);
+        cashSection.style.display="block"
     }
 }
-nextButton.addEventListener("click",nextClickHandler);
-checkButton.addEventListener("click",checkClickHandler);
-table.innerHTML=`
-<tbody><tr>
-<th>No.of Notes
-</th><td class="noOfNotes"></td>
-<td class="noOfNotes"></td>
-<td class="noOfNotes"></td>
-<td class="noOfNotes"></td>
-<td class="noOfNotes"></td>
-<td class="noOfNotes"></td>
-<td class="noOfNotes"></td>
-</tr>
-<tr>
-<th>Note
-</th><td>2000</td>
-<td>500</td>
-<td>100</td>
-<td>20</td>
-<td>10</td>
-<td>5</td>
-<td>1</td>
-</tr>
-</tbody>`
+
+function calculateNotes(balance) {
+    var amount = balance;
+
+    for (let i = 0; i < noOfNotesArr.length; i++) {
+
+
+        noOfNotesArr[i].innerText = Math.trunc(amount / notesArr[i]);
+
+        amount = amount % notesArr[i];
+
+
+    }
+   table.style.display="block";
+}
+
+function checkClickHandler() {
+    table.style.display="none";
+    if (billAmount.value > cashGiven.value) {
+        message.innerText = "Cash given should be greater than or equal to Bill amount";
+        div.appendChild(message);
+    } else {
+        message.remove();
+        var balance = cashGiven.value - billAmount.value;
+
+        if (balance === 0) {
+            message.innerText = "You Don't have to return anything"
+            div.appendChild(message);
+        } else {
+            message.remove();
+            calculateNotes(balance);
+        }
+    }
+}
+nextButton.addEventListener("click", nextClickHandler);
+checkButton.addEventListener("click", checkClickHandler);

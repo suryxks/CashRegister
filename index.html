@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +9,49 @@
     <link href="style.css" rel="stylesheet">
 
 </head>
+
 <body>
     <div id="content">
-      <h2>Cash Register Manager</h2>
-      <p>Enter the bill amount and cash given by the customer and know minimum number of notes to return</p>
-       <h3>Bill Amount</h3>
-       <input type="number" id="bill-amount" required>
-       <button id="next-btn">Next</button>
+        <h2>Cash Register Manager</h2>
+        <p>Enter the bill amount and cash given by the customer and know minimum number of notes to return</p>
+        <section id="bill">
+            <h3>Bill Amount</h3>
+            <input type="number" id="bill-amount" required>
+            <button id="next-btn">Next</button>
+        </section>
+        <section id="cash">
+            <h3>Cash Given:</h3>
+            <input type="number" id="cash-given" required>
+            <button id="check-btn">Check</button>
+        </section>
+        <table id="cash-table">
+            <tbody>
+                <tr>
+                    <th>No.of Notes
+                    </th>
+                    <td class="noOfNotes"></td>
+                    <td class="noOfNotes"></td>
+                    <td class="noOfNotes"></td>
+                    <td class="noOfNotes"></td>
+                    <td class="noOfNotes"></td>
+                    <td class="noOfNotes"></td>
+                    <td class="noOfNotes"></td>
+                </tr>
+                <tr>
+                    <th>Note
+                    </th>
+                    <td>2000</td>
+                    <td>500</td>
+                    <td>100</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>5</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <script src="app.js"></script>
 </body>
+
 </html>
