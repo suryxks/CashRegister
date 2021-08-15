@@ -9,9 +9,10 @@ var cashSection=document.querySelector("#cash");
 var cashGiven = document.querySelector("#cash-given");
 var checkButton=document.querySelector("#check-btn");
 var noOfNotesArr = document.querySelectorAll(".noOfNotes");
+var balanceAMount=document.querySelector("#amount-return");
 var notesArr = [2000, 500, 100, 20, 10, 5, 1];
 cashSection.style.display="none";
-console.log(cashSection);
+
 
 function nextClickHandler() {
     if (billAmount.value == "") {
@@ -34,8 +35,9 @@ function calculateNotes(balance) {
 
         amount = amount % notesArr[i];
 
-
+     
     }
+    balanceAMount.innerHTML=`Balance amount: ${balance}`;
    table.style.display="block";
 }
 
