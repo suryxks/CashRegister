@@ -38,11 +38,13 @@ function calculateNotes(balance) {
      
     }
     balanceAMount.innerHTML=`Balance amount: ${balance}`;
+    balanceAMount.style.display="block"
    table.style.display="block";
 }
 
 function checkClickHandler() {
     table.style.display="none";
+    balanceAMount.style.display="none"
     if (Number(billAmount.value) > Number(cashGiven.value)) {
         message.innerText = "Cash given should be greater than or equal to Bill amount";
         div.appendChild(message);
