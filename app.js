@@ -43,7 +43,7 @@ function calculateNotes(balance) {
 
 function checkClickHandler() {
     table.style.display="none";
-    if (billAmount.value > cashGiven.value) {
+    if (Number(billAmount.value) > Number(cashGiven.value)) {
         message.innerText = "Cash given should be greater than or equal to Bill amount";
         div.appendChild(message);
     } else {
