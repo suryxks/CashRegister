@@ -16,12 +16,12 @@
         <p>Enter the bill amount and cash given by the customer and know minimum number of notes to return</p>
         <section id="bill">
             <h3>Bill Amount</h3>
-            <input type="number" id="bill-amount" required>
+            <input type="number" id="bill-amount" required min="0">
             <button id="next-btn">Next</button>
         </section>
         <section id="cash">
             <h3>Cash Given:</h3>
-            <input type="number" id="cash-given" required>
+            <input type="number" id="cash-given" required min="0">
             <button id="check-btn">Check</button>
         </section>
         <table id="cash-table">
