@@ -15,8 +15,8 @@ cashSection.style.display="none";
 
 
 function nextClickHandler() {
-    if (billAmount.value == "") {
-        message.innerText = "Please enter a bill amount to proceed to the next step";
+    if (billAmount.value == ""||Number(billAmount.value)<0) {
+        message.innerText = "Please enter a valid bill amount to proceed to the next step";
         div.appendChild(message);
 
     } else {
