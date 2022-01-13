@@ -1,32 +1,32 @@
-var billAmount = document.querySelector("#bill-amount");
-var nextButton = document.querySelector("#next-btn");
-var table = document.querySelector("#cash-table");
+let billAmount = document.querySelector("#bill-amount");
+let nextButton = document.querySelector("#next-btn");
+let table = document.querySelector("#cash-table");
 table.style.display = "none";
-var div = document.querySelector("#content");
-var message = document.createElement("p");
-var cashSection=document.querySelector("#cash");
+let div = document.querySelector("#content");
+let message = document.createElement("p");
+let cashSection = document.querySelector("#cash");
 
-var cashGiven = document.querySelector("#cash-given");
-var checkButton=document.querySelector("#check-btn");
-var noOfNotesArr = document.querySelectorAll(".noOfNotes");
-var balanceAMount=document.querySelector("#amount-return");
-var notesArr = [2000, 500, 100, 20, 10, 5, 1];
-cashSection.style.display="none";
+let cashGiven = document.querySelector("#cash-given");
+let checkButton = document.querySelector("#check-btn");
+let noOfNotesArr = document.querySelectorAll(".noOfNotes");
+let balanceAMount = document.querySelector("#amount-return");
+let notesArr = [2000, 500, 100, 20, 10, 5, 1];
+cashSection.style.display = "none";
 
 
-function nextClickHandler() {
-    if (billAmount.value == ""||Number(billAmount.value)<0) {
+const nextClickHandler = () => {
+    if (billAmount.value == "" || Number(billAmount.value) < 0) {
         message.innerText = "Please enter a valid bill amount to proceed to the next step";
         div.appendChild(message);
 
     } else {
         message.remove();
-        cashSection.style.display="block"
+        cashSection.style.display = "block"
     }
 }
 
-function calculateNotes(balance) {
-    var amount = balance;
+const calculateNotes = balance => {
+    let amount = balance;
 
     for (let i = 0; i < noOfNotesArr.length; i++) {
 
@@ -35,17 +35,17 @@ function calculateNotes(balance) {
 
         amount = amount % notesArr[i];
 
-     
+
     }
-    balanceAMount.innerHTML=`Balance amount: ${balance}`;
-    balanceAMount.style.display="block"
-   table.style.display="block";
+    balanceAMount.innerHTML = `Balance amount: ${balance}`;
+    balanceAMount.style.display = "block"
+    table.style.display = "block";
 }
 
 function checkClickHandler() {
-    table.style.display="none";
-    balanceAMount.style.display="none"
-    if (Number(billAmount.value) > Number(cashGiven.value)||Number(billAmount.value)<0||Number(cashGiven.value)<0) {
+    table.style.display = "none";
+    balanceAMount.style.display = "none"
+    if (Number(billAmount.value) > Number(cashGiven.value) || Number(billAmount.value) < 0 || Number(cashGiven.value) < 0) {
         message.innerText = "Cash given should be greater than or equal to Bill amount and both of them should be positive";
         div.appendChild(message);
     } else {
